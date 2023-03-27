@@ -1,0 +1,6 @@
+[submodule "proto"]
+	path = proto
+	url = https://github.com/newmsk/x64rdbg_proto.git
+[submodule "src/sdk"]
+	path = src/sdk
+	url = https://github.com/x64dbg/sdk
