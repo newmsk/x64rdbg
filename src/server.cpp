@@ -14,6 +14,7 @@
 #include "wrapper/memory.h"
 #include "wrapper/bridgemain.h"
 #include "wrapper/module.h"
+#include "wrapper/stack.h"
 
 using grpc::Server;
 using grpc::ServerBuilder;
@@ -50,6 +51,7 @@ void Run()
 	Memory memory_service;
 	BridgeMain bridgemain_service;
 	Module module_service;
+	Stack stack_service;
 	
 	ServerBuilder builder;
 	builder.AddListeningPort(address, grpc::InsecureServerCredentials());
@@ -58,6 +60,7 @@ void Run()
 	builder.RegisterService(&memory_service);
 	builder.RegisterService(&bridgemain_service);
 	builder.RegisterService(&module_service);
+	builder.RegisterService(&stack_service);
 	std::unique_ptr<Server> server(builder.BuildAndStart());
 	dprintf("Server listening on port: %s\n", rdbg_port.c_str());
 	server->Wait();
